@@ -24,4 +24,6 @@ void addNode(int value, node* head);
 
 void printTree(node* head);
 
+void freeTree(node* head);
+
 #endif

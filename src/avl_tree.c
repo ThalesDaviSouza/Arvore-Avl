@@ -74,3 +74,13 @@ void addNode(int value, node* head){
     }
 
 }
+
+void freeTree(node* head){
+    if(head->right != NULL)
+        freeTree(head->right);
+    
+    if(head->left != NULL)
+        freeTree(head->left);
+    
+    free(head);
+}

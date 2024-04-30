@@ -14,5 +14,7 @@ int main(int argc, char** argv){
 
     printTree(head);
 
+    freeTree(head);
+    
     return 0;
 }
