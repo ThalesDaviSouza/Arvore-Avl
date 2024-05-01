@@ -47,8 +47,7 @@ void printTree(node* head){
         printTree(head->right);
     }
 
-    printf("Value: %d \t Height: %d \t Count: %d\n", head->value, head->height, head->count);
-    //printf("Value: %d \t Factor: %d\n", head->value, _calculateFactor(head));
+    printf("Value: %d \t Height: %d \t Count: %d \t Factor: %d\n", head->value, head->height, head->count,  _calculateFactor(head));
     
     if(head->left != NULL){
         printTree(head->left);
@@ -118,12 +117,13 @@ node* addNode(int value, node* head){
     else if(factor <= -2){
         int factorLeft = _calculateFactor(head->left);
         
-        if(factor < 0){
+        if(factorLeft < 0){
             printf("Node %d, Rotate LL\n\n", head->value);
             head = rotateLL(head);
         }
         else {
             printf("Node %d, Rotate LR\n\n", head->value);
+            head = rotateLR(head);
         }
     }
 
@@ -194,6 +194,13 @@ node* rotateLL(node* head){
     }
 
     return new_head;
+}
+
+node* rotateLR(node* head){
+    head->left = rotateRR(head->left);
+    head = rotateLL(head);
+
+    return head;
 }
 
 void freeTree(node* head){
