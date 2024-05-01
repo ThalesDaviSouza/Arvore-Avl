@@ -1,6 +1,6 @@
 output: main.o avl_tree.o
-	gcc main.o avl_tree.o -o output
-	output
+	gcc main.o avl_tree.o -o main
+	main
 
 main.o: main.c
 	gcc -c main.c

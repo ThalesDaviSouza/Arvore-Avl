@@ -13,14 +13,36 @@ typedef struct node_t {
     struct node_t* right;
 } node;
 
+/**
+ * Enum to know the direction
+ * that a node is added in function addNode
+*/
 typedef enum NodeDirection_t{
     RIGHT,
     LEFT
 }NodeDirection;
 
+/**
+ * Function that creates a node with deafult values
+*/
 node* createNode(int value);
 
-void addNode(int value, node* head);
+/**
+ * Function that inserts a node
+*/
+node* addNode(int value, node* head);
+
+/**
+ * Function to Right Right case
+ * Also called Left Rotation
+*/
+node* rotateRR(node* head);
+
+/**
+ * Function to Left Left case
+ * Also called Right Rotation
+*/
+node* rotateLL(node* head);
 
 void printTree(node* head);
 
