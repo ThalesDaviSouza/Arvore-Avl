@@ -16,7 +16,10 @@ node* createNode(int value){
     return newNode;
 }
 
-
+/**
+ * Calculates the factor of a node
+ * Is used to check is necessary to make any rotation
+*/
 int _calculateFactor(node* head){
     int rightHeight = 0;
     int leftHeight = 0;
@@ -32,6 +35,9 @@ int _calculateFactor(node* head){
     return rightHeight - leftHeight;
 }
 
+/**
+ * Calculates the height of a node
+*/
 int _height(node* _node){
     if(_node == NULL) return 0;
 
@@ -53,9 +59,13 @@ void printTree(node* head){
         printTree(head->left);
     }
 
-
 }
 
+
+/**
+ * Inscrease the node Height
+ * Gets the height of children nodes and return the bigger height + 1
+*/
 void increaseNodeHeight(node* head, NodeDirection nodeDirection){
     int rightHeight = 0;
     int leftHeight = 0;
@@ -66,22 +76,27 @@ void increaseNodeHeight(node* head, NodeDirection nodeDirection){
     if(head->right != NULL)
         rightHeight = head->right->height;
 
-    head->height = rightHeight > leftHeight ? rightHeight : leftHeight;
+    head->height = _max(rightHeight, leftHeight);
+
     head->height++;
 }
 
-
+/**
+ * Insert a new node to the Avl Tree
+*/
 node* addNode(int value, node* head){
     int factor = 0;
     
-    if(head == NULL) return NULL;
+    if(head == NULL) return createNode(value);
 
     if(value == head->value){
         head->count++;
         return head;
     }
 
+    // Redirect the node to correct side of tree
     if(value > head->value){
+
         if(head->right == NULL){
             head->right = createNode(value);
         }
@@ -91,7 +106,9 @@ node* addNode(int value, node* head){
 
         increaseNodeHeight(head, RIGHT);
 
-    }else{
+    }
+    else{
+
         if(head->left == NULL){
             head->left = createNode(value);
         }
@@ -102,16 +119,16 @@ node* addNode(int value, node* head){
         increaseNodeHeight(head, LEFT);
     }
 
+
     factor = _calculateFactor(head);
 
     if(factor >= 2){
         int factorRight = _calculateFactor(head->right);
 
         if(factorRight > 0){
-            printf("Node %d, Rotate RR\n\n", head->value);
             head = rotateRR(head);
-        }else{
-            printf("Node %d, Rotate RL\n\n", head->value);
+        }
+        else{
             head = rotateRL(head);
         }
     }
@@ -119,11 +136,9 @@ node* addNode(int value, node* head){
         int factorLeft = _calculateFactor(head->left);
         
         if(factorLeft < 0){
-            printf("Node %d, Rotate LL\n\n", head->value);
             head = rotateLL(head);
         }
         else {
-            printf("Node %d, Rotate LR\n\n", head->value);
             head = rotateLR(head);
         }
     }
@@ -139,14 +154,13 @@ node* rotateRR(node* head){
     if(head == NULL) return NULL;
     if(head->right == NULL) return head;
 
+    // Performs the Left Rotation
     new_head = head->right;
-
     aux = new_head->left;
-
     new_head->left = old_head;
-
     old_head->right = aux;
 
+    // Recalculates the height of old head
     if(old_head->left == NULL && old_head->right == NULL) {
         old_head->height = 0;
     }
@@ -154,6 +168,7 @@ node* rotateRR(node* head){
         old_head->height = _max(_height(old_head->left), _height(old_head->right)) + 1;
     }
 
+    // Recalculates the height of new head
     if(new_head->left == NULL && new_head->right == NULL) {
         new_head->height = 0;
     }
@@ -172,14 +187,13 @@ node* rotateLL(node* head){
     if(head == NULL) return NULL;
     if(head->left == NULL) return head;
 
+    // Performs the Left Rotation
     new_head = head->left;
-
     aux = new_head->right;
-
     new_head->right = old_head;
-
     old_head->left = aux;
 
+    // Recalculates the old head's height
     if(old_head->left == NULL && old_head->right == NULL) {
         old_head->height = 0;
     }
@@ -187,6 +201,7 @@ node* rotateLL(node* head){
         old_head->height = _max(_height(old_head->left), _height(old_head->right)) + 1;
     }
 
+    // Recalculates the new head's height
     if(new_head->left == NULL && new_head->right == NULL) {
         new_head->height = 0;
     }

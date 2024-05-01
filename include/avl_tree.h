@@ -56,8 +56,16 @@ node* rotateLR(node* head);
 */
 node* rotateRL(node* head);
 
+/**
+ * Function to print the Tree
+ * Prints each node in one line
+ * Prints node's value, height, count and factor
+*/
 void printTree(node* head);
 
+/**
+ * Free memory used to avl tree
+*/
 void freeTree(node* head);
 
 #endif

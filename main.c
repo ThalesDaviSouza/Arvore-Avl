@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv){
 
-    node* head = createNode(10);
+    node* head = addNode(10, NULL);
     
     printf("Adding: 20\n\n");
     head = addNode(20, head);
