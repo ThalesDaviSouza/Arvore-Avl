@@ -50,6 +50,12 @@ node* rotateLL(node* head);
 */
 node* rotateLR(node* head);
 
+/**
+ * Function to Right Left case
+ * Performs a left rotation and a right rotation
+*/
+node* rotateRL(node* head);
+
 void printTree(node* head);
 
 void freeTree(node* head);

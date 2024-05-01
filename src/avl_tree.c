@@ -112,6 +112,7 @@ node* addNode(int value, node* head){
             head = rotateRR(head);
         }else{
             printf("Node %d, Rotate RL\n\n", head->value);
+            head = rotateRL(head);
         }
     }
     else if(factor <= -2){
@@ -199,6 +200,13 @@ node* rotateLL(node* head){
 node* rotateLR(node* head){
     head->left = rotateRR(head->left);
     head = rotateLL(head);
+
+    return head;
+}
+
+node* rotateRL(node* head){
+    head->right = rotateLL(head->right);
+    head = rotateRR(head);
 
     return head;
 }
