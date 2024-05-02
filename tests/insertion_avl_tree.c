@@ -48,12 +48,14 @@ MU_TEST(SimpleRR2){
     head1 = addNode(22, head1);
     head1 = addNode(43, head1);
     
+
     node* head2 = createNode(30);
     head2->left = createNode(20);
     head2->left->left = createNode(10);
     head2->left->right = createNode(22);
     head2->right = createNode(40);
     head2->right->right = createNode(43);
+
 
     mu_assert(treesEqual(head1, head2) == true, "In simple RR test 2, the expected result is different from the code's output.");
 }
@@ -73,10 +75,53 @@ MU_TEST(SimpleLL){
 }
 
 
+MU_TEST(SimpleLL2){
+    node* head1 = addNode(10, NULL);
+    head1 = addNode(-20, head1);
+    head1 = addNode(-30, head1);
+    head1 = addNode(-40, head1);
+    head1 = addNode(-22, head1);
+    head1 = addNode(-50, head1);
+    
+
+    node* head2 = createNode(-30);
+    head2->left = createNode(-40);
+    head2->left->left = createNode(-50);
+    head2->right = createNode(-20);
+    head2->right->right = createNode(10);
+    head2->right->left = createNode(-22);
+
+
+    mu_assert(treesEqual(head1, head2) == true, "In simple LL test 2, the expected result is different from the code's output.");
+
+}
+
+MU_TEST(LR){
+    node* head1 = addNode(10, NULL);
+    head1 = addNode(-20, head1);
+    head1 = addNode(-30, head1);
+    head1 = addNode(-23, head1);
+    head1 = addNode(-22, head1);
+    
+
+    node* head2 = createNode(-23);
+    head2->left = createNode(-30);
+    head2->right = createNode(-20);
+    head2->right->right = createNode(10);
+    head2->right->left = createNode(-22);
+
+
+    mu_assert(treesEqual(head1, head2) == true, "In simple LL test 2, the expected result is different from the code's output.");
+
+}
+
+
 MU_TEST_SUITE(test_suite){
     MU_RUN_TEST(SimpleRR);
     MU_RUN_TEST(SimpleRR2);
     MU_RUN_TEST(SimpleLL);
+    MU_RUN_TEST(SimpleLL2);
+    MU_RUN_TEST(LR);
     
 }
 
