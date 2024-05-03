@@ -19,11 +19,10 @@ bool treesEqual(node* h1, node* h2){
 }
 
 
-MU_TEST(testeCase){
+// MU_TEST(testeCase){
     
 
-    //mu_assert(result == TRUE, "In array base test 2, the expected result is different from the code's output.");
-}
+// }
 
 MU_TEST(SimpleRR){
     node* head1 = addNode(1, NULL);
@@ -37,7 +36,12 @@ MU_TEST(SimpleRR){
     head2->right->right = createNode(4);    
 
 
-    mu_assert(treesEqual(head1, head2) == true, "In simple RR test 1, the expected result is different from the code's output.");
+    bool isEqual = treesEqual(head1, head2); 
+
+    freeTree(head1);
+    freeTree(head2);
+
+    mu_assert(isEqual, "In simple RR test 1, the expected result is different from the code's output.");
 }
 
 MU_TEST(SimpleRR2){
@@ -56,8 +60,12 @@ MU_TEST(SimpleRR2){
     head2->right = createNode(40);
     head2->right->right = createNode(43);
 
+    bool isEqual = treesEqual(head1, head2); 
 
-    mu_assert(treesEqual(head1, head2) == true, "In simple RR test 2, the expected result is different from the code's output.");
+    freeTree(head1);
+    freeTree(head2);
+
+    mu_assert(isEqual, "In simple RR test 2, the expected result is different from the code's output.");
 }
 
 MU_TEST(SimpleLL){
@@ -71,7 +79,12 @@ MU_TEST(SimpleLL){
     head2->left->left = createNode(-40);
     head2->right = createNode(10);
 
-    mu_assert(treesEqual(head1, head2) == true, "In simple LL test 1, the expected result is different from the code's output.");
+    bool isEqual = treesEqual(head1, head2); 
+
+    freeTree(head1);
+    freeTree(head2);
+
+    mu_assert(isEqual, "In simple LL test 1, the expected result is different from the code's output.");
 }
 
 
@@ -90,9 +103,14 @@ MU_TEST(SimpleLL2){
     head2->right = createNode(-20);
     head2->right->right = createNode(10);
     head2->right->left = createNode(-22);
+    
+    
+    bool isEqual = treesEqual(head1, head2); 
 
+    freeTree(head1);
+    freeTree(head2);
 
-    mu_assert(treesEqual(head1, head2) == true, "In simple LL test 2, the expected result is different from the code's output.");
+    mu_assert(isEqual, "In simple LL test 2, the expected result is different from the code's output.");
 
 }
 
@@ -111,7 +129,12 @@ MU_TEST(LR){
     head2->right->left = createNode(-22);
 
 
-    mu_assert(treesEqual(head1, head2) == true, "In simple LL test 2, the expected result is different from the code's output.");
+    bool isEqual = treesEqual(head1, head2); 
+
+    freeTree(head1);
+    freeTree(head2);
+
+    mu_assert(isEqual, "In simple LL test 2, the expected result is different from the code's output.");
 
 }
 

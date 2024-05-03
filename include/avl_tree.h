@@ -32,6 +32,8 @@ node* createNode(int value);
 */
 node* addNode(int value, node* head);
 
+node* findNode(int value, node* head);
+
 /**
  * Function to Right Right case
  * Also called Left Rotation

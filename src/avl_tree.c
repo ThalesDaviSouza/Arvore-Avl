@@ -226,6 +226,19 @@ node* rotateRL(node* head){
     return head;
 }
 
+node* findNode(int value, node* head){
+    if(head == NULL) return NULL;
+    if(head->value == value) return head;
+
+    if(value > head->value) {
+        return findNode(value, head->right);
+    }
+    else {
+        return findNode(value, head->left);
+    }
+}
+
+
 void freeTree(node* head){
     if(head->right != NULL)
         freeTree(head->right);
