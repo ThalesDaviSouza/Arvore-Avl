@@ -39,6 +39,11 @@ O arquivo avl_tree.h está documentado de forma explicar o que cada função faz
 Os pontos principais que precisam ser explicados aqui para uso dessa biblioteca até o momento são:
 - `node`: É o struct base do projeto. Nele temos as principais informações de cada nó (valor, nó filho à direita, nó filho à esquerda e altura).
 - `addNode`: Recebe como parâmetro um valor inteiro e o nó raiz da árvore e retorna a nova raiz (caso durante a inserção e balanceamento houve a mudança do nó raiz). <br />
+- `findNode`: Recebe como parâmetro um valor inteiro que será buscado na árvore e a raiz da árvore. Retorna o *nó* com o valor procurado ou *null* para caso não encontre o valor.
 
 Para compilar basta utilizar o comando `make` <br />
+Para rodar os testes unitários presentes no projeto basta utilizar o comando `make` seguindo do nome de um dos testes:
+- `test-all`: Para rodar todos os testes de uma única vez.
+- `test-insertion-avl-tree`: Para rodar os testes de inserção na árvore.
+- `test-find-avl-tree`: Para rodar os testes de busca na árvore. 
 Além disso, caso queira limpar a solução dos .exe e dos .o gerados durante a compilação: `make clean` 
