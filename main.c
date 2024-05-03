@@ -4,46 +4,21 @@
 
 int main(int argc, char** argv){
 
-    node* head = addNode(10, NULL);
-    
-    printf("Adding: 20\n\n");
-    head = addNode(20, head);
-    
-    printf("Adding: 30\n\n"); 
-    head = addNode(30, head);
-    
-    printf("Adding: 40\n\n");
-    head = addNode(40, head);
-    
-    printf("Adding: 22\n\n");
-    head = addNode(22, head);
-    
-    printf("Adding: 43\n\n");
-    head = addNode(43, head);
-    
-    printf("Adding: 39\n\n");
-    head = addNode(39, head);
-    
-    printf("Adding: 38\n\n");
-    head = addNode(38, head);
-    
-    printf("Adding: 44\n\n");
-    head = addNode(44, head);
-    
-    printf("Adding: 37\n\n");
-    head = addNode(37, head);
+    node* head = addNode(100, NULL);
+    head = addNode(200, head);
+    head = addNode(300, head);
+    head = addNode(400, head);
+    head = addNode(220, head);
+    head = addNode(430, head);
+    head = addNode(390, head);
+    head = addNode(380, head);
+    head = addNode(440, head);
+    head = addNode(370, head);
+    head = addNode(420, head);
+    head = addNode(421, head);
 
-    // printf("Adding: -20\n\n");
-    // head = addNode(-20, head);
-    
-    // printf("Adding: -30\n\n");
-    // head = addNode(-30, head);
-    
-    // printf("Adding: -33\n\n");
-    // head = addNode(-23, head);
-    
-    // printf("Adding: -40\n\n");
-    // head = addNode(-22, head);
+    head = removeNode(440, head);
+    head = removeNode(421, head);
 
     printTree(head);
 

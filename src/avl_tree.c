@@ -238,6 +238,119 @@ node* findNode(int value, node* head){
     }
 }
 
+node* _deleteNode(node* n){
+    if(n == NULL) return NULL;
+    
+    node* right = n->right;
+    node* left = n->left;
+    
+    
+    if(n->right == NULL){
+        free(n);
+        return left;
+    }
+    else{
+        node* rightSmallest = NULL;
+        node* aux = NULL; 
+
+        rightSmallest = n->right;
+        aux = n;
+
+        while(rightSmallest->left != NULL){
+            aux = rightSmallest;
+            rightSmallest = rightSmallest->left;
+        }
+
+        n->value = rightSmallest->value;
+
+        aux->right = rightSmallest->right;
+
+        if(n != aux){
+            aux->left = NULL;
+        }
+
+        free(rightSmallest);
+
+        return n;
+    }
+}
+
+
+int _recalculateTreeHeight(node* head){
+    if(head == NULL) return -1;
+    int rightHeight = 0;
+    int leftHeight = 0;
+
+    if(head->left == NULL && head->right == NULL){
+        head->height = 0;
+        return head->height;
+    }
+
+    if(head->right != NULL)
+        rightHeight = _recalculateTreeHeight(head->right);
+
+    if(head->left != NULL)
+        leftHeight = _recalculateTreeHeight(head->left);
+
+    head->height = _max(leftHeight, rightHeight) +1;
+    
+    return head->height;
+}
+
+node* _rebalanceTree(node* head){
+    if(head == NULL) return NULL;
+    int factor;
+
+    head->left = _rebalanceTree(head->left);
+    head->right = _rebalanceTree(head->right);
+
+    factor = _calculateFactor(head);
+
+    if(factor >= 2){
+        int factorRight = _calculateFactor(head->right);
+
+        if(factorRight > 0){
+            head = rotateRR(head);
+        }
+        else{
+            head = rotateRL(head);
+        }
+    }
+    else if(factor <= -2){
+        int factorLeft = _calculateFactor(head->left);
+        
+        if(factorLeft < 0){
+            head = rotateLL(head);
+        }
+        else {
+            head = rotateLR(head);
+        }
+    }
+
+    return head;
+}
+
+node* removeNode(int value, node* head){
+    if(head == NULL) return NULL;
+    
+    if(head->value == value){
+        head = _deleteNode(head);
+        
+        _recalculateTreeHeight(head);
+
+        _rebalanceTree(head);
+        
+    }
+    else{
+        if(value > head->value){
+            head->right = removeNode(value, head->right);
+        }
+        else{
+            head->left = removeNode(value, head->left);
+        }
+    }
+}
+
 
 void freeTree(node* head){
     if(head->right != NULL)
