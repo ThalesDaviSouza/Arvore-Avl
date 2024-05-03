@@ -17,7 +17,6 @@ Criar uma biblioteca que permita criar uma Árvore Avl de forma simples com cód
 - ` Deleção `
 
 ## 📝 As funcionalidades que faltam ser implementadas:
-- ` Busca `
 - ` Deleção `
 
 ## 💻 Pré-requisitos
