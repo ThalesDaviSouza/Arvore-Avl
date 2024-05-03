@@ -45,5 +45,6 @@ Para compilar basta utilizar o comando `make` <br />
 Para rodar os testes unitários presentes no projeto basta utilizar o comando `make` seguindo do nome de um dos testes:
 - `test-all`: Para rodar todos os testes de uma única vez.
 - `test-insertion-avl-tree`: Para rodar os testes de inserção na árvore.
-- `test-find-avl-tree`: Para rodar os testes de busca na árvore. 
+- `test-find-avl-tree`: Para rodar os testes de busca na árvore.
+
 Além disso, caso queira limpar a solução dos .exe e dos .o gerados durante a compilação: `make clean` 
