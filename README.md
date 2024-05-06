@@ -4,13 +4,13 @@ Esse projeto foi desenvolvido para implementar um tópico de programação que e
 
 A ideia de implementar a Árvore Avl veio em decorrência de ser uma árvore binária balanceada que pela teoria não aparentava ser muito complexa de ser implementada e onde a complexidade do pior caso é O(log n) para inserção, deleção e para leitura. <br />
 
-Assim, comecei a criar esse repositório para ser tanta uma forma de estudo ativo, quanto uma biblioteca que outras pessoas possam utilizar. <br />
+Assim, comecei a criar esse repositório para ser tanto uma forma de estudo ativo, quanto uma biblioteca que outras pessoas possam utilizar. <br />
 
 ## 📖 Objetivos
 
-Criar uma biblioteca que permita criar uma Árvore Avl de forma simples com código limpo e aberto, além disso, e que tenha testes unitários para as principais funcionalidades.
+Criar uma biblioteca que permita criar uma Árvore Avl de forma simples com código limpo e aberto. Além disso, implementar testes unitários para as principais funcionalidades.
 
-## 📌 As funcionalidades que a biblioteca deve implementar:
+## 📌 As funcionalidades que a biblioteca implementa:
 - ` Criação `
 - ` Inserção `
 - ` Busca `
