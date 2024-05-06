@@ -32,10 +32,20 @@ node* createNode(int value);
 */
 node* addNode(int value, node* head);
 
-
+/**
+ * Function that find a node with a specific value
+ * 
+ * Receive as paramters the value you want to find
+ * and the tree root
+ * 
+ * Return NULL if the node didn't exist in the tree
+ * Return the node if it is in tree
+*/
 node* findNode(int value, node* head);
 
-
+/**
+ * Remove the node with the value passed as paramter
+*/
 node* removeNode(int value, node* head);
 
 /**
